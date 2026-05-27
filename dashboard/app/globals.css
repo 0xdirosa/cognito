@@ -8,6 +8,7 @@
   --bg-primary: #f8fafc;
   --bg-card: #ffffff;
   --bg-sidebar: #f1f5f9;
+  --bg-surface: #f1f5f9;
   --border: #e2e8f0;
   --text-primary: #0f172a;
   --text-secondary: #475569;
@@ -19,6 +20,7 @@ html.dark {
   --bg-primary: #020617;
   --bg-card: #0f172a;
   --bg-sidebar: #0f172a;
+  --bg-surface: #1e293b;
   --border: #1e293b;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;

@@ -13,15 +13,15 @@ interface WalletCardProps {
 
 export function WalletCard({ label, address, balance, showQr }: WalletCardProps) {
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-      <h2 className="text-sm font-semibold text-slate-300 mb-3">{label}</h2>
+    <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+      <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-3">{label}</h2>
       <div className="flex items-center gap-2 text-sm mb-2">
-        <span className="font-mono text-white" title={address}>
+        <span className="font-mono text-[var(--text-primary)]" title={address}>
           {formatAddress(address)}
         </span>
         <button
           onClick={() => copyToClipboard(address)}
-          className="text-slate-600 hover:text-slate-400 transition-colors"
+          className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
           title="Copy address"
         >
           <Copy className="w-3 h-3" />
@@ -30,14 +30,14 @@ export function WalletCard({ label, address, balance, showQr }: WalletCardProps)
           href={`https://testnet.arcscan.app/address/${address}`}
           target="_blank"
           rel="noopener"
-          className="text-slate-600 hover:text-slate-400 transition-colors"
+          className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
           title="View on ArcScan"
         >
           <ExternalLink className="w-3 h-3" />
         </a>
       </div>
-      <p className="text-2xl font-bold text-white font-mono">
-        {formatUsdc(balance)} <span className="text-sm text-slate-400">USDC</span>
+      <p className="text-2xl font-bold text-[var(--text-primary)] font-mono">
+        {formatUsdc(balance)} <span className="text-sm text-[var(--text-secondary)]">USDC</span>
       </p>
       {Number(balance) < 0.05 && (
         <p className="text-xs text-amber-400 mt-2">⚠ Low balance — top up recommended</p>

@@ -8,7 +8,11 @@ export function Footer() {
   const agentId = activity?.agent?.id ?? "23745";
 
   return (
-    <footer className="ml-56 border-t border-slate-800 bg-slate-900 text-xs text-slate-600 px-8 py-3 flex items-center justify-between">
+    <footer className="ml-56 border-t text-xs px-8 py-3 flex items-center justify-between" style={{
+      borderColor: "var(--border)",
+      background: "var(--bg-card)",
+      color: "var(--text-muted)",
+    }}>
       <div className="flex items-center gap-2">
         <span className="text-accent font-medium">Cognito</span>
         <span>·</span>
@@ -30,7 +34,7 @@ export function Footer() {
         <span>Circle SDK · viem · Groq · Next.js</span>
         {lastUpdated && (
           <>
-            <span className="text-slate-700">|</span>
+            <span className="opacity-40">|</span>
             <span>Updated: {lastUpdated.toLocaleTimeString()}</span>
           </>
         )}

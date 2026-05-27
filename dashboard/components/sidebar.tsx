@@ -69,7 +69,7 @@ export function Sidebar() {
               className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
                 active
                   ? "bg-accent/10 text-accent font-medium"
-                  : "hover:bg-slate-800/50"
+                  : "hover:bg-[var(--bg-surface)]"
               }`}
               style={{
                 color: active ? "var(--accent)" : "var(--text-secondary)",
@@ -86,7 +86,7 @@ export function Sidebar() {
       <div className="px-5 py-3 border-t" style={{ borderColor: "var(--border)" }}>
         <button
           onClick={toggleTheme}
-          className="flex items-center gap-2 w-full px-3 py-2 rounded-md text-sm transition-colors hover:bg-slate-800/30"
+          className="flex items-center gap-2 w-full px-3 py-2 rounded-md text-sm transition-colors hover:bg-[var(--bg-surface)]"
           style={{ color: "var(--text-secondary)" }}
         >
           {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}

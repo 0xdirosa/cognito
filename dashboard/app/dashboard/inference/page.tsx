@@ -37,12 +37,12 @@ export default function InferenceHistory() {
   };
 
   if (loading && !activity) {
-    return <div className="text-slate-400 py-20 text-center">Loading...</div>;
+    return <div className="text-[var(--text-secondary)] py-20 text-center">Loading...</div>;
   }
 
   if (error && !activity) {
     return (
-      <div className="text-slate-400 py-20 text-center">
+      <div className="text-[var(--text-secondary)] py-20 text-center">
         <p className="text-lg font-medium mb-2">Error loading data</p>
         <p className="text-sm">{error}</p>
       </div>
@@ -52,21 +52,21 @@ export default function InferenceHistory() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-white">Inference History</h1>
+        <h1 className="text-2xl font-bold text-[var(--text-primary)]">Inference History</h1>
         <button
           onClick={handleExportCsv}
-          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition-colors"
+          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--bg-surface)] hover:bg-[var(--border)] text-sm text-[var(--text-secondary)] transition-colors"
         >
           <Download className="w-4 h-4" />
           Export CSV
         </button>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-800 text-left text-slate-400">
+              <tr className="border-b border-[var(--border)] text-left text-[var(--text-secondary)]">
                 <th className="py-3 px-4 font-medium w-8">#</th>
                 <th className="py-3 px-4 font-medium w-16">Time</th>
                 <th className="py-3 px-4 font-medium">Prompt</th>
@@ -78,21 +78,21 @@ export default function InferenceHistory() {
                 <th className="py-3 px-4 font-medium w-44">Tx Hash</th>
               </tr>
             </thead>
-            <tbody className="text-slate-300">
+            <tbody className="text-[var(--text-secondary)]">
               {paginated.map((r) => (
-                <tr key={r.index} className="border-b border-slate-800/50 hover:bg-slate-800/30">
-                  <td className="py-3 px-4 font-mono text-slate-500">{r.index}</td>
-                  <td className="py-3 px-4 font-mono text-xs text-slate-500">
+                <tr key={r.index} className="border-b border-[var(--border)]/50 hover:bg-[var(--bg-surface)]/30">
+                  <td className="py-3 px-4 font-mono text-[var(--text-muted)]">{r.index}</td>
+                  <td className="py-3 px-4 font-mono text-xs text-[var(--text-muted)]">
                     {new Date(r.timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}
                   </td>
                   <td className="py-3 px-4 max-w-[180px] truncate" title={r.prompt}>
                     {r.prompt.slice(0, 60)}...
                   </td>
-                  <td className="py-3 px-4 max-w-[200px] truncate text-slate-400" title={r.response}>
+                  <td className="py-3 px-4 max-w-[200px] truncate text-[var(--text-secondary)]" title={r.response}>
                     {r.response.slice(0, 80)}...
                   </td>
                   <td className="py-3 px-4 font-mono">{r.tokens}</td>
-                  <td className="py-3 px-4 font-mono text-slate-400">{r.latencyMs}ms</td>
+                  <td className="py-3 px-4 font-mono text-[var(--text-secondary)]">{r.latencyMs}ms</td>
                   <td className="py-3 px-4" title={`Provider: ${getModelBadge(r.model).provider} | Model: ${r.model}`}>
                     <span className="text-sm mr-1">{getModelBadge(r.model).icon}</span>
                     <span className="font-mono text-xs text-accent">{getModelBadge(r.model).shortName}</span>
@@ -117,7 +117,7 @@ export default function InferenceHistory() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between px-4 py-3 border-t border-slate-800 text-xs text-slate-500">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--border)] text-xs text-[var(--text-muted)]">
           <span>
             Showing {page * PAGE_SIZE + 1}–{Math.min((page + 1) * PAGE_SIZE, INFERENCE_HISTORY.length)} of {INFERENCE_HISTORY.length}
           </span>
@@ -125,7 +125,7 @@ export default function InferenceHistory() {
             <button
               onClick={() => setPage((p) => Math.max(0, p - 1))}
               disabled={page === 0}
-              className="flex items-center gap-1 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 disabled:opacity-30 transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--bg-surface)] hover:bg-[var(--border)] disabled:opacity-30 transition-colors"
             >
               <ChevronLeft className="w-3 h-3" /> Prev
             </button>
@@ -136,7 +136,7 @@ export default function InferenceHistory() {
                 className={`px-3 py-1.5 rounded transition-colors ${
                   i === page
                     ? "bg-accent/20 text-accent"
-                    : "bg-slate-800 hover:bg-slate-700 text-slate-400"
+                    : "bg-[var(--bg-surface)] hover:bg-[var(--border)] text-[var(--text-secondary)]"
                 }`}
               >
                 {i + 1}
@@ -145,7 +145,7 @@ export default function InferenceHistory() {
             <button
               onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
               disabled={page >= totalPages - 1}
-              className="flex items-center gap-1 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 disabled:opacity-30 transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--bg-surface)] hover:bg-[var(--border)] disabled:opacity-30 transition-colors"
             >
               Next <ChevronRight className="w-3 h-3" />
             </button>

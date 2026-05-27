@@ -98,8 +98,8 @@ function BarChartSection() {
   }));
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-6">
-      <h2 className="text-sm font-semibold text-slate-300 mb-4">USDC Spent Per Day</h2>
+    <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
+      <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">USDC Spent Per Day</h2>
       <div className="h-48">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={barData}>
@@ -119,12 +119,12 @@ export default function PaymentAnalytics() {
   const { activity, loading, error } = useData();
 
   if (loading && !activity) {
-    return <div className="text-slate-400 py-20 text-center">Loading...</div>;
+    return <div className="text-[var(--text-secondary)] py-20 text-center">Loading...</div>;
   }
 
   if (error && !activity) {
     return (
-      <div className="text-slate-400 py-20 text-center">
+      <div className="text-[var(--text-secondary)] py-20 text-center">
         <p className="text-lg font-medium mb-2">Error loading data</p>
         <p className="text-sm">{error}</p>
       </div>
@@ -136,39 +136,39 @@ export default function PaymentAnalytics() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-white mb-6">Payment Analytics</h1>
+      <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-6">Payment Analytics</h1>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <DollarSign className="w-4 h-4" />
             Avg Cost / Inference
           </div>
-          <p className="text-2xl font-bold text-white font-mono">{avgCost}</p>
-          <p className="text-xs text-slate-500 mt-1">USDC</p>
+          <p className="text-2xl font-bold text-[var(--text-primary)] font-mono">{avgCost}</p>
+          <p className="text-xs text-[var(--text-muted)] mt-1">USDC</p>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <TrendingUp className="w-4 h-4" />
             Total Spent
           </div>
-          <p className="text-2xl font-bold text-white font-mono">{totalSpent}</p>
-          <p className="text-xs text-slate-500 mt-1">USDC across 6 inferences</p>
+          <p className="text-2xl font-bold text-[var(--text-primary)] font-mono">{totalSpent}</p>
+          <p className="text-xs text-[var(--text-muted)] mt-1">USDC across 6 inferences</p>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <ArrowUpRight className="w-4 h-4" />
             Projected / Month
           </div>
-          <p className="text-2xl font-bold text-white font-mono">~0.09</p>
-          <p className="text-xs text-slate-500 mt-1">@ 3 inferences/day</p>
+          <p className="text-2xl font-bold text-[var(--text-primary)] font-mono">~0.09</p>
+          <p className="text-xs text-[var(--text-muted)] mt-1">@ 3 inferences/day</p>
         </div>
       </div>
 
       {/* Line Chart */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-6">
-        <h2 className="text-sm font-semibold text-slate-300 mb-4">USDC Spent Over Time</h2>
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
+        <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">USDC Spent Over Time</h2>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={PAYMENT_HISTORY}>
@@ -186,23 +186,23 @@ export default function PaymentAnalytics() {
       <BarChartSection />
 
       {/* Transaction Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
-        <div className="px-5 py-3 border-b border-slate-800">
-          <h2 className="text-sm font-semibold text-slate-300">All Transactions</h2>
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden">
+        <div className="px-5 py-3 border-b border-[var(--border)]">
+          <h2 className="text-sm font-semibold text-[var(--text-secondary)]">All Transactions</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-800 text-left text-slate-400">
+              <tr className="border-b border-[var(--border)] text-left text-[var(--text-secondary)]">
                 <th className="py-3 px-4 font-medium">Type</th>
                 <th className="py-3 px-4 font-medium">Amount</th>
                 <th className="py-3 px-4 font-medium">Tx Hash</th>
                 <th className="py-3 px-4 font-medium">Status</th>
               </tr>
             </thead>
-            <tbody className="text-slate-300">
+            <tbody className="text-[var(--text-secondary)]">
               {TRANSACTIONS.map((tx, i) => (
-                <tr key={i} className="border-b border-slate-800/50 hover:bg-slate-800/30">
+                <tr key={i} className="border-b border-[var(--border)]/50 hover:bg-[var(--bg-surface)]/30">
                   <td className="py-3 px-4">{tx.type}</td>
                   <td className="py-3 px-4 font-mono text-accent">{tx.amount} USDC</td>
                   <td className="py-3 px-4">

@@ -95,12 +95,12 @@ export default function StreamingPayments() {
   }, []);
 
   if (loading && !activity) {
-    return <div className="text-slate-400 py-20 text-center">Loading...</div>;
+    return <div className="text-[var(--text-secondary)] py-20 text-center">Loading...</div>;
   }
 
   if (error && !activity) {
     return (
-      <div className="text-slate-400 py-20 text-center">
+      <div className="text-[var(--text-secondary)] py-20 text-center">
         <p className="text-lg font-medium mb-2">Error loading data</p>
         <p className="text-sm">{error}</p>
       </div>
@@ -127,7 +127,7 @@ export default function StreamingPayments() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-white mb-6">Streaming Payments</h1>
+      <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-6">Streaming Payments</h1>
 
       {!isLocal && (
         <div className="flex items-center gap-3 bg-amber-500/10 border border-amber-500/30 rounded-xl px-4 py-3 mb-6 text-sm text-amber-300">
@@ -141,15 +141,15 @@ export default function StreamingPayments() {
       )}
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <Radio className="w-4 h-4" /> Rate
           </div>
           <p className="text-2xl font-bold text-accent font-mono">{DEMO_RATE}</p>
-          <p className="text-xs text-slate-500 mt-1">USDC / second</p>
+          <p className="text-xs text-[var(--text-muted)] mt-1">USDC / second</p>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <TrendingUp className="w-4 h-4" /> Status
           </div>
           <div className="flex items-center gap-2">
@@ -162,30 +162,30 @@ export default function StreamingPayments() {
             />
             <span
               className={`text-xl font-bold ${
-                isStreaming ? "text-emerald-400" : "text-slate-400"
+                isStreaming ? "text-emerald-400" : "text-[var(--text-secondary)]"
               }`}
             >
               {isStreaming ? "STREAMING" : "IDLE"}
             </span>
           </div>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+        <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <TrendingUp className="w-4 h-4" /> Streamed
           </div>
-          <p className="text-2xl font-bold text-white font-mono">
+          <p className="text-2xl font-bold text-[var(--text-primary)] font-mono">
             {demoTotal.toFixed(4)}
           </p>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-[var(--text-muted)] mt-1">
             USDC total ({demoTick} tx)
           </p>
         </div>
       </div>
 
       {/* Demo Controls */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-6">
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-sm font-semibold text-slate-300">Demo Controls</h2>
+          <h2 className="text-sm font-semibold text-[var(--text-secondary)]">Demo Controls</h2>
           <span className="px-2 py-0.5 rounded text-xs bg-cyan-400/10 text-cyan-400 font-medium">
             Client-side simulation
           </span>
@@ -227,8 +227,8 @@ export default function StreamingPayments() {
 
         {/* Local controls */}
         {isLocal && (
-          <div className="mt-4 pt-4 border-t border-slate-800">
-            <h2 className="text-sm font-semibold text-slate-300 mb-3">Live Stream</h2>
+          <div className="mt-4 pt-4 border-t border-[var(--border)]">
+            <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-3">Live Stream</h2>
             <div className="flex gap-3">
               <button
                 onClick={startStream}
@@ -250,8 +250,8 @@ export default function StreamingPayments() {
       </div>
 
       {/* Live Chart */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-6">
-        <h2 className="text-sm font-semibold text-slate-300 mb-4">
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
+        <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">
           {demoRunning ? "Balance Decreasing (live)" : "Balance During Stream"}
         </h2>
         <div className="h-48">
@@ -275,24 +275,24 @@ export default function StreamingPayments() {
       </div>
 
       {/* Micro-Transaction Log */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
-        <div className="px-5 py-3 border-b border-slate-800">
-          <h2 className="text-sm font-semibold text-slate-300">Micro-Transaction Log</h2>
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl overflow-hidden">
+        <div className="px-5 py-3 border-b border-[var(--border)]">
+          <h2 className="text-sm font-semibold text-[var(--text-secondary)]">Micro-Transaction Log</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-800 text-left text-slate-400">
+              <tr className="border-b border-[var(--border)] text-left text-[var(--text-secondary)]">
                 <th className="py-3 px-4 font-medium">#</th>
                 <th className="py-3 px-4 font-medium">Amount</th>
                 <th className="py-3 px-4 font-medium">Tx Hash</th>
                 <th className="py-3 px-4 font-medium">Status</th>
               </tr>
             </thead>
-            <tbody className="text-slate-300">
+            <tbody className="text-[var(--text-secondary)]">
               {simTxs.length === 0 && (
-                <tr className="border-b border-slate-800/50">
-                  <td className="py-3 px-4 font-mono text-slate-500">1</td>
+                <tr className="border-b border-[var(--border)]/50">
+                  <td className="py-3 px-4 font-mono text-[var(--text-muted)]">1</td>
                   <td className="py-3 px-4 font-mono text-accent">0.0001 USDC</td>
                   <td className="py-3 px-4">
                     <a
@@ -314,8 +314,8 @@ export default function StreamingPayments() {
                 </tr>
               )}
               {simTxs.map((tx, i) => (
-                <tr key={tx.id} className="border-b border-slate-800/50">
-                  <td className="py-3 px-4 font-mono text-slate-500">{tx.id}</td>
+                <tr key={tx.id} className="border-b border-[var(--border)]/50">
+                  <td className="py-3 px-4 font-mono text-[var(--text-muted)]">{tx.id}</td>
                   <td className="py-3 px-4 font-mono text-accent">{tx.amount} USDC</td>
                   <td className="py-3 px-4 font-mono text-xs text-cyan-400">
                     {tx.hash}
