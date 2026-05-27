@@ -8,7 +8,7 @@ export function Footer() {
   const agentId = activity?.agent?.id ?? "23745";
 
   return (
-    <footer className="ml-56 border-t text-xs px-6 py-3 flex flex-wrap items-center gap-x-4 gap-y-1" style={{
+    <footer className="md:ml-56 border-t text-xs px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-x-4 gap-y-1" style={{
       borderColor: "var(--border)",
       background: "var(--bg-card)",
       color: "var(--text-muted)",
@@ -25,7 +25,7 @@ export function Footer() {
         <ExternalLink className="w-3 h-3" />
       </a>
       <span>Arc Testnet</span>
-      <span className="ml-auto opacity-60">Circle SDK · viem · Groq · Next.js</span>
+      <span className="sm:ml-auto opacity-60">Circle SDK · viem · Groq · Next.js</span>
       {lastUpdated && (
         <span>Updated: {lastUpdated.toLocaleTimeString()}</span>
       )}

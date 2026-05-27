@@ -139,7 +139,7 @@ export default function PaymentAnalytics() {
       <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-6">Payment Analytics</h1>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
         <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
           <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <DollarSign className="w-4 h-4" />

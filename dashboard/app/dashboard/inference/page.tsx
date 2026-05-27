@@ -71,8 +71,8 @@ export default function InferenceHistory() {
                 <th className="py-3 px-4 font-medium w-16">Time</th>
                 <th className="py-3 px-4 font-medium">Prompt</th>
                 <th className="py-3 px-4 font-medium">Response</th>
-                <th className="py-3 px-4 font-medium w-20">Tokens</th>
-                <th className="py-3 px-4 font-medium w-24">Latency</th>
+                <th className="py-3 px-4 font-medium w-20 hidden sm:table-cell">Tokens</th>
+                <th className="py-3 px-4 font-medium w-24 hidden sm:table-cell">Latency</th>
                 <th className="py-3 px-4 font-medium w-36">Model</th>
                 <th className="py-3 px-4 font-medium w-24">Amount</th>
                 <th className="py-3 px-4 font-medium w-44">Tx Hash</th>
@@ -91,8 +91,8 @@ export default function InferenceHistory() {
                   <td className="py-3 px-4 max-w-[200px] truncate text-[var(--text-secondary)]" title={r.response}>
                     {r.response.slice(0, 80)}...
                   </td>
-                  <td className="py-3 px-4 font-mono">{r.tokens}</td>
-                  <td className="py-3 px-4 font-mono text-[var(--text-secondary)]">{r.latencyMs}ms</td>
+                  <td className="py-3 px-4 font-mono hidden sm:table-cell">{r.tokens}</td>
+                  <td className="py-3 px-4 font-mono text-[var(--text-secondary)] hidden sm:table-cell">{r.latencyMs}ms</td>
                   <td className="py-3 px-4" title={`Provider: ${getModelBadge(r.model).provider} | Model: ${r.model}`}>
                     <span className="inline-flex items-center gap-1 bg-[var(--bg-surface)] px-2 py-0.5 rounded text-xs">
                       <span className="text-sm">{getModelBadge(r.model).icon}</span>

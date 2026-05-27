@@ -25,7 +25,7 @@ export default function DashboardOverview() {
     return (
       <div>
         <div className="h-8 w-48 bg-[var(--bg-surface)] rounded animate-pulse mb-6" />
-        <div className="grid grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
           {Array.from({ length: 4 }).map((_, i) => (
             <SkeletonCard key={i} />
           ))}
@@ -109,7 +109,7 @@ export default function DashboardOverview() {
       </div>
 
       {/* Stats Row */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
         <StatsCard
           label="Total Inferences"
           value={String(inferenceCount)}
@@ -140,7 +140,7 @@ export default function DashboardOverview() {
       <BudgetCard budget={budget} />
 
       {/* Wallet Row */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <WalletCard
           label="Owner Wallet"
           address={wallets.owner.address}
@@ -168,7 +168,7 @@ export default function DashboardOverview() {
             ArcScan <ExternalLink className="w-3 h-3" />
           </a>
         </div>
-        <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-sm">
           <div>
             <p className="text-[var(--text-muted)] mb-1">Agent ID</p>
             <p className="font-mono text-[var(--text-primary)]">#{identity.tokenId}</p>
@@ -191,7 +191,7 @@ export default function DashboardOverview() {
       {/* Validation Card */}
       <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
         <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-3">Validation</h2>
-        <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-sm">
           <div>
             <p className="text-[var(--text-muted)] mb-1">Status</p>
             <p className="text-emerald-400 font-medium">{validation.status}</p>

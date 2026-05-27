@@ -39,7 +39,7 @@ export default function AgentIdentity() {
       {/* Metadata Card */}
       <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
         <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">Metadata</h2>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
           <div>
             <p className="text-[var(--text-muted)] mb-1">Name</p>
             <p className="text-[var(--text-primary)] font-medium">{agent.name}</p>
@@ -108,7 +108,7 @@ export default function AgentIdentity() {
       {/* On-Chain Identity */}
       <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
         <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">On-Chain Identity</h2>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
           <div>
             <p className="text-[var(--text-muted)] mb-1">Token ID</p>
             <p className="font-mono text-[var(--text-primary)]">#{identity.tokenId}</p>
@@ -138,7 +138,7 @@ export default function AgentIdentity() {
       {/* Reputation */}
       <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
         <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">Reputation</h2>
-        <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-sm">
           <div>
             <p className="text-[var(--text-muted)] mb-1">Score</p>
             <p className="text-2xl font-bold text-[var(--text-primary)] font-mono">
@@ -160,7 +160,7 @@ export default function AgentIdentity() {
       {/* Validation */}
       <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
         <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">Validation</h2>
-        <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-sm">
           <div>
             <p className="text-[var(--text-muted)] mb-1">Status</p>
             <p className="text-emerald-400 font-medium">{validation.status}</p>

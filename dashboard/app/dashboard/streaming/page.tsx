@@ -145,7 +145,7 @@ export default function StreamingPayments() {
         </div>
       )}
 
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
         <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
           <div className="flex items-center gap-2 text-[var(--text-muted)] text-xs mb-2">
             <Radio className="w-4 h-4" /> Rate
