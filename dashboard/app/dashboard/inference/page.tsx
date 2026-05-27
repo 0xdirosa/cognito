@@ -80,7 +80,7 @@ export default function InferenceHistory() {
             </thead>
             <tbody className="text-[var(--text-secondary)]">
               {paginated.map((r) => (
-                <tr key={r.index} className="border-b border-[var(--border)]/50 hover:bg-[var(--bg-surface)]/30">
+                <tr key={r.index} className="border-b border-[var(--border)] hover:bg-[var(--bg-surface)]">
                   <td className="py-3 px-4 font-mono text-[var(--text-muted)]">{r.index}</td>
                   <td className="py-3 px-4 font-mono text-xs text-[var(--text-muted)]">
                     {new Date(r.timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}
@@ -94,8 +94,10 @@ export default function InferenceHistory() {
                   <td className="py-3 px-4 font-mono">{r.tokens}</td>
                   <td className="py-3 px-4 font-mono text-[var(--text-secondary)]">{r.latencyMs}ms</td>
                   <td className="py-3 px-4" title={`Provider: ${getModelBadge(r.model).provider} | Model: ${r.model}`}>
-                    <span className="text-sm mr-1">{getModelBadge(r.model).icon}</span>
-                    <span className="font-mono text-xs text-accent">{getModelBadge(r.model).shortName}</span>
+                    <span className="inline-flex items-center gap-1 bg-[var(--bg-surface)] px-2 py-0.5 rounded text-xs">
+                      <span className="text-sm">{getModelBadge(r.model).icon}</span>
+                      <span className="font-mono text-accent">{getModelBadge(r.model).shortName}</span>
+                    </span>
                   </td>
                   <td className="py-3 px-4 font-mono text-accent">{formatUsdc(r.amount)} USDC</td>
                   <td className="py-3 px-4">

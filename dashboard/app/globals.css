@@ -14,6 +14,9 @@
   --text-secondary: #475569;
   --text-muted: #94a3b8;
   --accent: #06b6d4;
+  --warning-bg: #fef3c7;
+  --warning-border: #fcd34d;
+  --warning-text: #92400e;
 }
 
 html.dark {
@@ -26,6 +29,9 @@ html.dark {
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --accent: #22d3ee;
+  --warning-bg: rgba(245,158,11,0.1);
+  --warning-border: rgba(245,158,11,0.3);
+  --warning-text: #fcd34d;
 }
 
 html, body {

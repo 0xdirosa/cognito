@@ -130,11 +130,16 @@ export default function StreamingPayments() {
       <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-6">Streaming Payments</h1>
 
       {!isLocal && (
-        <div className="flex items-center gap-3 bg-amber-500/10 border border-amber-500/30 rounded-xl px-4 py-3 mb-6 text-sm text-amber-300">
-          <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+        <div className="flex items-start gap-3 rounded-xl px-4 py-3 mb-6 text-sm" style={{
+          background: "var(--warning-bg)",
+          borderColor: "var(--warning-border)",
+          borderWidth: 1,
+          color: "var(--warning-text)",
+        }}>
+          <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
           <span>
             Streaming hanya tersedia di local dev environment (
-            <code className="text-amber-200">npm run dev</code>
+            <code style={{ color: "var(--warning-text)", fontWeight: 600 }}>npm run dev</code>
             ). Halaman ini dalam read-only mode.
           </span>
         </div>
