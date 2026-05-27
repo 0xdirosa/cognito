@@ -1,0 +1,13 @@
+{
+  "name": "Cognito",
+  "description": "Autonomous AI agent with on-chain identity that pays per inference request using USDC nanopayments on Arc",
+  "capabilities": [
+    "inference",
+    "nanopayments",
+    "autonomous-execution",
+    "on-chain-identity"
+  ],
+  "version": "1.0.0",
+  "standard": "ERC-8004",
+  "network": "Arc Testnet"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "cognito-agent",
+  "version": "1.0.0",
+  "description": "Cognito — AI agent with on-chain identity (ERC-8004) that autonomously pays per inference request using USDC nanopayments on Arc Testnet",
+  "type": "module",
+  "scripts": {
+    "create-wallets": "tsx src/scripts/01-create-wallets.ts",
+    "register-agent": "tsx src/scripts/02-register-agent.ts",
+    "setup-inference": "tsx src/scripts/03-setup-inference.ts",
+    "run-agent": "tsx src/scripts/04-run-agent.ts",
+    "record-reputation": "tsx src/scripts/05-record-reputation.ts",
+    "run-validation": "tsx src/scripts/05b-validation.ts",
+    "verify-status": "tsx src/scripts/06-verify-status.ts",
+    "upload-metadata": "tsx src/scripts/07-upload-metadata.ts",
+    "stream-inference": "tsx src/scripts/08-streaming-inference.ts",
+    "export-activity": "tsx src/scripts/09-export-activity.ts",
+    "reset-budget": "tsx src/scripts/10-reset-budget.ts",
+    "agent-commerce": "tsx src/scripts/11-agent-commerce.ts",
+    "demo": "bash scripts/demo-reset.sh",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@circle-fin/developer-controlled-wallets": "^4.5.0",
+    "dotenv": "^16.4.0",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

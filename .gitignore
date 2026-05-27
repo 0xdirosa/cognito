@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+.env.local
+budget-state.json
+webhook-log.json
+*.log
+.DS_Store
+.next/
+dashboard/public/activity-log.json
+COGNITO_SCRIPTS.md

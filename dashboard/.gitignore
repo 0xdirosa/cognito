@@ -1,0 +1,5 @@
+.vercel
+.next
+.env.local
+public/activity-log.json
+public/webhook-log.json

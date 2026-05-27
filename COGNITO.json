@@ -1,0 +1,26 @@
+{
+  "project": "Cognito",
+  "version": "1.0.0",
+  "agentId": "23745",
+  "standard": "ERC-8004",
+  "network": "Arc Testnet",
+  "chainId": 5042002,
+  "dashboard": "https://cognito-dashboard.vercel.app",
+  "explorer": "https://testnet.arcscan.app/token/0x8004A818BFB912233c491871b3d84c89A494BD9e?a=23745",
+  "ipfsMetadata": "ipfs://QmStDueZCXru2DhzR743Q451YY5Uor68UPGv4Eyr4aumdm",
+  "contracts": {
+    "identityRegistry": "0x8004A818BFB912233c491871b3d84c89A494BD9e",
+    "reputationRegistry": "0x8004B663056A597Dffe9eCcC1965A193B7388713",
+    "validationRegistry": "0x8004Cb1BF31DAf7788923b405b754f57acEB4272"
+  },
+  "stats": {
+    "totalInferences": 6,
+    "totalPaid": "0.006 USDC",
+    "reputationScore": 95,
+    "validationStatus": "PASSED",
+    "agentsDiscovered": 14
+  },
+  "techStack": ["TypeScript", "Node.js", "Next.js", "Circle SDK",
+    "viem", "Groq", "Gemini", "Pinata", "Arc Testnet"],
+  "hackathon": "Circle/Arc Stablecoins Commerce Stack Challenge"
+}
