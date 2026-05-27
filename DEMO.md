@@ -6,7 +6,7 @@
 - [ ] `.env` configured with `CIRCLE_API_KEY`, `CIRCLE_ENTITY_SECRET`, `GROQ_API_KEY`
 - [ ] Owner wallet funded (≥ 0.05 USDC on Arc Testnet)
 - [ ] Agent registered: `AGENT_ID=23745` in `.env`
-- [ ] Terminal ready: `cd ~/project`
+- [ ] Terminal ready: `cd ~/cognito`
 - [ ] Run `npm run export-activity` to refresh dashboard data
 
 ---

@@ -67,7 +67,7 @@ other agents, and streams everything to a production dashboard.
 
 ```bash
 # 1. Clone and install
-cd ~/project
+cd ~/cognito
 npm install
 
 # 2. Configure environment
