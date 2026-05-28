@@ -9,7 +9,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function() {
+  try {
+    var theme = localStorage.getItem('theme');
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    }
+  } catch(e) {}
+})();
+`.trim(),
+          }}
+        />
+      </head>
       <body className="font-sans antialiased min-h-screen" style={{
         background: "var(--bg-primary)",
         color: "var(--text-primary)",

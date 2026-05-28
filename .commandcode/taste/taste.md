@@ -30,4 +30,5 @@ See [workflow/taste.md](workflow/taste.md)
 # ui
 - Avoid displaying the same information in multiple places on the dashboard. Before proposing a new card/widget, verify the data isn't already shown elsewhere (e.g., hero section, sidebar, other pages). Confidence: 0.70
 - For dark/light theming, use CSS variables (--bg-primary, --bg-card, --border, --text-primary, etc.) in globals.css rather than refactoring components with Tailwind dark: prefixes. The toggle should just add/remove the "dark" class on <html>. Confidence: 0.70
+- Prevent theme flash on page load by adding an inline synchronous <script> in the <head> (before React hydration) that reads localStorage and applies the "dark" class immediately. Do not rely on React-level theme initialization — it runs too late and causes a visible flash. Confidence: 0.75
 
