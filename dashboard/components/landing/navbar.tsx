@@ -56,7 +56,7 @@ export function LandingNavbar() {
             COGNITO
           </span>
           <span
-            className="inline-block w-1.5 h-1.5 rounded-full animate-blink"
+            className="inline-block w-2 h-2 rounded-full animate-blink"
             style={{ background: "var(--accent)" }}
           />
         </Link>
