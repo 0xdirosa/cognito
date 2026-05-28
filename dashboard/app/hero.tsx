@@ -25,7 +25,7 @@ export function HeroSection() {
 
       <div className="animate-fade-in-up-delay-2 mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
         <Link
-          href="/dashboard/api"
+          href="/dashboard"
           className="inline-flex items-center gap-2 text-base font-medium px-6 py-3 rounded-lg transition-all hover:brightness-110"
           style={{ background: "var(--accent)", color: "#020617" }}
         >
