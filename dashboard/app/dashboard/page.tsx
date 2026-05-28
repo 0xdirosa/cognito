@@ -1,13 +1,17 @@
+/**
+ * Dashboard Overview — platform-feel hero, stats, quick actions, budget.
+ */
 "use client";
 
 import { useData } from "@/providers/data-provider";
 import { SkeletonCard } from "@/components/skeleton-card";
 import { LiveIndicator } from "@/components/live-indicator";
-import { formatAddress, formatUsdc, copyToClipboard, timeAgo } from "@/lib/utils";
+import { formatAddress, formatUsdc, timeAgo } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { WalletCard } from "@/components/wallet-card";
 import { StatsCard } from "@/components/stats-card";
 import { BudgetCard } from "@/components/budget-card";
+import Link from "next/link";
 import {
   Brain,
   DollarSign,
@@ -16,6 +20,10 @@ import {
   RefreshCw,
   CheckCircle,
   ExternalLink,
+  KeyRound,
+  BarChart2,
+  BookOpen,
+  ArrowRight,
 } from "lucide-react";
 
 export default function DashboardOverview() {
@@ -60,12 +68,9 @@ export default function DashboardOverview() {
 
   const { agent, wallets, identity, reputation, validation, budget } = activity;
   const score = agent.reputationScore ?? reputation.lastScore ?? "N/A";
-
-  // Live stats
   const inferenceCount = budget.spent ? Math.round(Number(budget.spent) / 0.001) : 6;
   const totalPaid = budget.spent || "0.006";
 
-  // "Since Registered" — use first inference timestamp from inference history
   const firstInference = new Date("2026-05-26T15:03:00Z");
   const now = new Date();
   const diffMs = now.getTime() - firstInference.getTime();
@@ -76,35 +81,45 @@ export default function DashboardOverview() {
 
   return (
     <div>
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Cognito</h1>
-            <LiveIndicator active={true} />
-          </div>
-          <div className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-            <span className="font-mono">#{agent.id}</span>
-            <span>·</span>
-            <span className="px-2 py-0.5 rounded bg-accent/10 text-accent text-xs font-medium">
-              ERC-8004
-            </span>
-            <span>·</span>
-            <div className="flex items-center gap-1 text-emerald-400">
-              <CheckCircle className="w-3.5 h-3.5" />
-              <span>{validation.status}</span>
+      {/* Hero Header */}
+      <div
+        className="rounded-xl border p-5 sm:p-6 mb-6 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(to bottom, rgba(6,182,212,0.04), transparent)",
+          borderColor: "var(--border)",
+        }}
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-3 mb-1">
+              <h1 className="text-2xl font-bold text-[var(--text-primary)]">Cognito</h1>
+              <LiveIndicator active={true} />
+            </div>
+            <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
+              <span className="font-mono">Agent #{agent.id}</span>
+              <span className="text-[var(--text-muted)]">·</span>
+              <span className="px-2 py-0.5 rounded bg-accent/10 text-accent text-xs font-medium">
+                ERC-8004
+              </span>
             </div>
           </div>
-        </div>
-        <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
-          {lastUpdated && <span>Updated {timeAgo(lastUpdated)}</span>}
-          <button
-            onClick={refresh}
-            className="p-2 hover:bg-[var(--bg-surface)] rounded-lg transition-colors"
-            title="Refresh"
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-medium px-2.5 py-1 rounded" style={{ background: "rgba(34,197,94,0.1)" }}>
+              <CheckCircle className="w-3 h-3" />
+              {validation.status}
+            </div>
+            <span className="text-xs text-[var(--text-muted)]">
+              {lastUpdated && `Updated ${timeAgo(lastUpdated)}`}
+            </span>
+            <button
+              onClick={refresh}
+              className="p-2 hover:bg-[var(--bg-surface)] rounded-lg transition-colors"
+              title="Refresh"
+              style={{ color: "var(--text-muted)" }}
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -124,7 +139,7 @@ export default function DashboardOverview() {
         />
         <StatsCard
           label="Reputation Score"
-          value={score}
+          value={String(score)}
           icon={<Star className="w-4 h-4" />}
           subtext="/ 100"
         />
@@ -133,7 +148,38 @@ export default function DashboardOverview() {
           value={sinceStr}
           icon={<Clock className="w-4 h-4" />}
           subtext={sinceDate}
+          progress={Math.min((diffHours / (30 * 24)) * 100, 100)}
         />
+      </div>
+
+      {/* Quick Actions */}
+      <div className="mb-6">
+        <h2 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--text-muted)" }}>
+          Quick Actions
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <QuickActionCard
+            href="/dashboard/api-keys"
+            icon={<KeyRound className="w-5 h-5" />}
+            label="Get API Key"
+            desc="Manage your API credentials"
+            accent="#22d3ee"
+          />
+          <QuickActionCard
+            href="/dashboard/usage"
+            icon={<BarChart2 className="w-5 h-5" />}
+            label="View Usage"
+            desc="Track costs and analytics"
+            accent="#a78bfa"
+          />
+          <QuickActionCard
+            href="/dashboard/api"
+            icon={<BookOpen className="w-5 h-5" />}
+            label="Read Docs"
+            desc="API reference and examples"
+            accent="#f472b6"
+          />
+        </div>
       </div>
 
       {/* Budget Card */}
@@ -189,7 +235,7 @@ export default function DashboardOverview() {
       </div>
 
       {/* Validation Card */}
-      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5">
+      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-5 mb-6">
         <h2 className="text-sm font-semibold text-[var(--text-secondary)] mb-3">Validation</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-sm">
           <div>
@@ -218,6 +264,40 @@ export default function DashboardOverview() {
   );
 }
 
+function QuickActionCard({
+  href,
+  icon,
+  label,
+  desc,
+  accent,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  desc: string;
+  accent: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="rounded-xl border p-4 flex items-center gap-4 transition-all duration-200 hover:border-cyan-400/30 group"
+      style={{ background: "var(--bg-card)", borderColor: "var(--border)" }}
+    >
+      <div
+        className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+        style={{ background: `${accent}15`, color: accent }}
+      >
+        {icon}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-medium text-[var(--text-primary)]">{label}</p>
+        <p className="text-xs text-[var(--text-muted)] mt-0.5">{desc}</p>
+      </div>
+      <ArrowRight className="w-4 h-4 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" style={{ color: "var(--text-muted)" }} />
+    </Link>
+  );
+}
+
 function AlertHistoryCard() {
   const [events, setEvents] = useState<any[]>([]);
   useEffect(() => {
@@ -239,7 +319,7 @@ function AlertHistoryCard() {
         <div key={i} className="flex items-center justify-between text-sm border-b border-[var(--border)]/50 pb-2 last:border-0">
           <div>
             <span className="text-[var(--text-secondary)] font-medium">{e.event}</span>
-            <span className="text-slate-600 ml-2 text-xs">
+            <span className="text-[var(--text-muted)] ml-2 text-xs">
               {new Date(e.timestamp).toLocaleTimeString()}
             </span>
           </div>
