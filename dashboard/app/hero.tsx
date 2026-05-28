@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="max-w-4xl mx-auto px-4 pt-28 pb-16 text-center">
+    <section className="max-w-4xl mx-auto px-4 pt-16 md:pt-28 pb-12 md:pb-16 text-center">
       <div className="animate-fade-in-up">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight" style={{ color: "var(--text-primary)" }}>
           Pay-per-Inference{" "}

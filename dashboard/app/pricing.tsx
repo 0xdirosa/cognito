@@ -9,7 +9,7 @@ const PRICING_ROWS = [
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="max-w-3xl mx-auto px-4 py-20">
+    <section id="pricing" className="max-w-3xl mx-auto px-4 py-16 md:py-20">
       <div className="text-center mb-10">
         <p className="text-xs font-medium uppercase tracking-widest mb-3" style={{ color: "var(--accent)" }}>
           Pricing

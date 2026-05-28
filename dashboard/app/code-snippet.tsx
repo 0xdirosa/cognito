@@ -21,7 +21,7 @@ export function CodeSnippet() {
   };
 
   return (
-    <section className="max-w-3xl mx-auto px-4 pb-16 animate-fade-in-up-delay-3">
+    <section className="max-w-3xl mx-auto px-4 pb-12 md:pb-16 animate-fade-in-up-delay-3">
       <div
         className="relative rounded-xl p-5 overflow-hidden"
         style={{

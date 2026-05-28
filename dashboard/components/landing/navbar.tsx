@@ -4,8 +4,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Menu, X, Sun, Moon } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "#features", label: "Features" },
@@ -13,8 +13,34 @@ const NAV_LINKS = [
   { href: "/dashboard/api", label: "Docs" },
 ];
 
+function useTheme() {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    if (stored === "light") {
+      setIsDark(false);
+    }
+  }, []);
+
+  const toggle = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  return { isDark, toggle };
+}
+
 export function LandingNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isDark, toggle: toggleTheme } = useTheme();
 
   return (
     <nav
@@ -53,6 +79,16 @@ export function LandingNavbar() {
             <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: "#22c55e" }} />
             <span className="text-emerald-400">Operational</span>
           </span>
+
+          {/* Desktop theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg transition-colors"
+            style={{ color: "var(--text-secondary)" }}
+            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
         </div>
 
         {/* Desktop CTA + Mobile menu toggle */}
@@ -97,11 +133,19 @@ export function LandingNavbar() {
               {link.label}
             </Link>
           ))}
-          <div className="inline-flex items-center gap-1.5 text-xs pt-1" style={{ color: "var(--text-secondary)" }}>
+          <div className="flex items-center gap-1.5 text-xs" style={{ color: "var(--text-secondary)" }}>
             Status
             <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: "#22c55e" }} />
             <span className="text-emerald-400">Operational</span>
           </div>
+          <button
+            onClick={toggleTheme}
+            className="flex items-center gap-2 text-sm transition-colors hover:text-[var(--accent)]"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            {isDark ? "Light Mode" : "Dark Mode"}
+          </button>
         </div>
       )}
     </nav>
